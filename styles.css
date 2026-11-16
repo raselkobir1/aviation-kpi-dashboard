@@ -1,0 +1,111 @@
+:root{--navy:#103366;--ink:#20364b;--muted:#61758a;--blue:#0864cb;--teal:#087d85;--line:#dce5ec;--bg:#f2f5f8;--bn:#7a3b00;--bnbg:#fff8ee}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 Arial,'Noto Sans Bengali',sans-serif}
+h1,h2,h3,.course-identity{font-family:'Space Grotesk',Arial,'Noto Sans Bengali',sans-serif}
+h1{font-size:29px;line-height:1.25;color:#102849;margin:0}
+h2{font-size:20px;margin:0 0 12px;color:#163257}
+h3{font-size:16px;margin:0 0 8px}
+p{margin:8px 0 13px}
+button,input,select{font:inherit;color:inherit}
+button,select{cursor:pointer}
+button{background:white;border:1px solid #cad8e4;padding:9px 13px;border-radius:7px;font-weight:600}
+button:hover{background:#eaf2fa}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #c28525;outline-offset:3px}
+.primary,button.active{background:var(--blue);color:white;border-color:var(--blue)}
+.primary:hover{background:#0753a8}
+input,select{padding:8px;border:1px solid #cad8e4;border-radius:6px;background:white;max-width:100%}
+label{display:block;font-size:12px;color:var(--muted)}
+.academic-header{background:white;padding:20px 4%;border-bottom:1px solid var(--line)}
+.academic-inner{display:flex;align-items:center;gap:28px;max-width:1500px;margin:auto}
+.logo{width:84px;height:84px;flex-shrink:0}
+.course-identity{border-left:1px solid #c9d9eb;padding-left:28px;color:var(--navy)}
+.course-identity strong{display:block;font-size:28px}
+.course-identity div{font-size:20px}
+.course-identity p{font-size:15px;color:#607da0;margin:4px 0}
+.notice{background:#fff3d6;color:#70501a;padding:12px 4%;font-size:12px}
+.layout{display:grid;grid-template-columns:215px 1fr;max-width:1800px;margin:auto}
+.sidebar{padding:22px 12px;display:flex;flex-direction:column;gap:6px;align-self:start;position:sticky;top:0}
+.sidebar button{text-align:left;border:0;background:transparent;padding:11px 12px;color:#374c66}
+.sidebar button .bn{display:block;font-weight:400;font-size:11px;color:#8a6a3e}
+.sidebar button.active{background:#dceeff;color:#075ab7}
+.sidebar .small{padding:15px 10px}
+main{padding:23px 24px 30px;min-width:0}
+.headrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+.small{font-size:12px;color:var(--muted)}
+.filters{background:white;border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:end}
+.filters select{min-width:120px}
+.airlines{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.chip{font-size:12px;padding:6px 12px}
+.scope{margin:10px 0 15px;color:var(--muted);font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{background:white;border:1px solid var(--line);border-top:3px solid #7aafd8;border-radius:9px;text-align:left;padding:16px;min-width:0}
+.card.selected{border-color:var(--blue);background:#f7fbff}
+.card .label{display:block;font-size:12px;color:var(--muted);min-height:36px}
+.card .label .bn{display:block;color:var(--bn);font-weight:400}
+.card strong{font-size:26px;display:block;font-weight:650;color:var(--navy);overflow-wrap:anywhere}
+.card small{color:var(--muted);font-size:11px}
+.twocol{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;margin-top:16px}
+.panel{background:white;border:1px solid var(--line);border-radius:10px;padding:20px;min-width:0;margin-bottom:16px}
+.twocol .panel{margin-bottom:0}
+.scroll{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#edf3f9;color:#31567b;text-align:right;padding:10px;white-space:nowrap}
+td{padding:10px;text-align:right;border-bottom:1px solid #e8edf2;font-variant-numeric:tabular-nums}
+td:first-child,th:first-child{text-align:left}
+td:first-child{white-space:nowrap}
+tr.total td{font-weight:700;background:#f4f9ff;border-top:2px solid #b9d3ec}
+td.num-col{background:#f3f9f2;color:#1d5a2b}
+td.den-col{background:#fbf6ec;color:#6d4a10}
+th.num-col{background:#dcefdc;color:#1d5a2b}
+th.den-col{background:#f4e6c9;color:#6d4a10}
+td.excluded{color:#9aa8b5;font-style:italic}
+td.left,th.left{text-align:left}
+.equation{background:#eaf3ff;border-radius:8px;padding:14px 16px;color:#075bbb;font-size:17px;font-weight:650;margin:12px 0;overflow-wrap:anywhere}
+.equation.small-eq{font-size:14px}
+.bn-box{background:var(--bnbg);border-left:3px solid #e0a458;padding:10px 12px;border-radius:4px;color:var(--bn);margin:8px 0}
+.bn-box b{color:#5b2c00}
+.learning-section{padding:16px 0;border-bottom:1px solid var(--line)}
+.learning-section:last-child{border:0}
+.warning{background:#fff5df;padding:12px;border-left:3px solid #d69c35;border-radius:4px}
+.practice{background:#e9f6f4;padding:16px;border-radius:7px;margin-top:14px}
+.practice input{width:160px}
+.practice button{margin:6px 4px 0 0}
+.practice .feedback{min-height:20px;margin-top:8px;font-weight:bold}
+.explore{margin-top:17px;background:#e3f3f3;padding:16px;border:1px solid #bde1e2;border-radius:8px;color:#17616a}
+.chart svg{width:100%;height:auto;min-width:550px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;margin-top:5px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+.charthead{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.linkrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.linkrow button{border:0;background:none;color:var(--blue);font-size:12px}
+.explainfull{max-width:1150px}
+.explainfull .result{font-size:36px;color:var(--blue);font-weight:bold}
+.steps{counter-reset:step;list-style:none;padding:0;margin:10px 0}
+.steps li{counter-increment:step;position:relative;padding:8px 0 8px 40px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:7px;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;text-align:center;line-height:26px;font-size:13px}
+.comp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.comp div{border:1px solid var(--line);border-radius:8px;padding:12px}
+.comp .n{border-top:3px solid #4c9a5c}
+.comp .d{border-top:3px solid #c99a3c}
+.source-list li{margin:10px 0;overflow-wrap:anywhere}
+a{color:#1262a2}
+.dict-item{padding:14px 0;border-bottom:1px solid var(--line)}
+.empty{padding:30px;text-align:center;background:#f7f9fb;color:var(--muted)}
+details{margin:14px 0}
+summary{cursor:pointer;font-weight:600}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.tools label{display:flex;align-items:center;gap:8px}
+.status{font-size:12px;background:#edf2f7;padding:3px 7px;border-radius:4px}
+.pagination{display:flex;gap:12px;align-items:center;margin-top:12px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.flow span{background:#eaf3ff;border:1px solid #c3daf3;border-radius:6px;padding:8px 10px;font-size:13px}
+.flow b{color:var(--muted)}
+.backbar{position:sticky;top:0;z-index:5;display:flex;gap:8px;padding:8px 0;margin:-8px 0 10px;background:var(--bg)}
+.backbar #backBtn{background:var(--navy);color:#fff;border-color:var(--navy)}
+.backbar #backBtn:hover{background:#0b2650}
+[hidden]{display:none!important}
+footer{font-size:11px;color:var(--muted);padding-top:20px}
+@media(min-width:1450px){.cards{grid-template-columns:repeat(6,1fr)}.card strong{font-size:25px}}
+@media(max-width:1000px){.layout{grid-template-columns:180px 1fr}.twocol{grid-template-columns:1fr}.course-identity div{font-size:17px}.course-identity p{font-size:13px}.academic-inner{gap:18px}.course-identity{padding-left:18px}}
+@media(max-width:700px){.academic-inner{flex-direction:column;align-items:flex-start;gap:10px}.logo{width:60px;height:60px}.course-identity{border:0;padding:0}.course-identity strong{font-size:22px}.layout{display:block}.sidebar{position:static;flex-direction:row;overflow:auto;padding:10px}.sidebar button{white-space:nowrap}.sidebar .small{display:none}main{padding:15px}.headrow{align-items:start;flex-direction:column}h1{font-size:23px}.cards{grid-template-columns:repeat(2,1fr)}.card strong{font-size:21px}.filters{gap:8px}.filters select{min-width:100px}.charthead{flex-direction:column}.notice{padding:10px 15px}.panel{padding:15px}.comp{grid-template-columns:1fr}}
+@media print{.sidebar,.filters,.airlines,.linkrow,.tools,.pagination{display:none}.layout{display:block}main{padding:0}.panel,.card{break-inside:avoid}.twocol{display:block}.card{display:inline-block;width:30%}}

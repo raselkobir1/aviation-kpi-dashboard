@@ -109,3 +109,13 @@ footer{font-size:11px;color:var(--muted);padding-top:20px}
 @media(max-width:1000px){.layout{grid-template-columns:180px 1fr}.twocol{grid-template-columns:1fr}.course-identity div{font-size:17px}.course-identity p{font-size:13px}.academic-inner{gap:18px}.course-identity{padding-left:18px}}
 @media(max-width:700px){.academic-inner{flex-direction:column;align-items:flex-start;gap:10px}.logo{width:60px;height:60px}.course-identity{border:0;padding:0}.course-identity strong{font-size:22px}.layout{display:block}.sidebar{position:static;flex-direction:row;overflow:auto;padding:10px}.sidebar button{white-space:nowrap}.sidebar .small{display:none}main{padding:15px}.headrow{align-items:start;flex-direction:column}h1{font-size:23px}.cards{grid-template-columns:repeat(2,1fr)}.card strong{font-size:21px}.filters{gap:8px}.filters select{min-width:100px}.charthead{flex-direction:column}.notice{padding:10px 15px}.panel{padding:15px}.comp{grid-template-columns:1fr}}
 @media print{.sidebar,.filters,.airlines,.linkrow,.tools,.pagination{display:none}.layout{display:block}main{padding:0}.panel,.card{break-inside:avoid}.twocol{display:block}.card{display:inline-block;width:30%}}
+.headright{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.summary-dlg{width:min(820px,94vw);max-height:88vh;border:1px solid var(--line);border-radius:12px;padding:0;color:var(--ink);font-family:'Noto Sans Bengali',Arial,sans-serif}
+.summary-dlg::backdrop{background:rgba(16,40,73,.45)}
+.summary-head{position:sticky;top:0;background:var(--navy);color:white;display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+.summary-head h2{color:white;margin:0}
+.summary-head button{background:transparent;color:white;border-color:rgba(255,255,255,.4)}
+.summary-body{padding:8px 22px 22px;line-height:1.75}
+.summary-body h3{color:var(--navy);margin:18px 0 6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.summary-body ol,.summary-body ul{margin:4px 0;padding-left:22px}
+.summary-body li{margin:4px 0}

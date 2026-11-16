@@ -54,7 +54,7 @@ window.addEventListener('popstate',e=>{const s=e.state;if(s){state.section=s.pag
 function render(){
  $('nav').innerHTML=categories.map(([c,b])=>`<button class="${state.section===c?'active':''}" data-section="${esc(c)}" aria-current="${state.section===c?'page':'false'}">${esc(c)}<span class="bn">${b}</span></button>`).join('')+'<p class="small">Real identities.<br>Synthetic measurements.<br>বাস্তব নাম, কৃত্রিম সংখ্যা।<br><br>12 months · 2025</p>';
  document.querySelectorAll('[data-section]').forEach(b=>b.onclick=()=>go(b.dataset.section));
- $('backbar').hidden=state.section==='Overview'; $('airlines').innerHTML=DATA.airlines.map(a=>`<button class="chip ${state.selected.has(a.code)?'active':''}" aria-pressed="${state.selected.has(a.code)}" data-airline="${a.code}">${a.name} · ${a.code}</button>`).join('');
+ $('backbar').hidden=state.section==='Overview'; $('summarizeBtn').hidden=state.section!=='Overview'; $('airlines').innerHTML=DATA.airlines.map(a=>`<button class="chip ${state.selected.has(a.code)?'active':''}" aria-pressed="${state.selected.has(a.code)}" data-airline="${a.code}">${a.name} · ${a.code}</button>`).join('');
  document.querySelectorAll('[data-airline]').forEach(b=>b.onclick=()=>{if(state.mode==='single')state.selected=new Set([b.dataset.airline]);else if(state.selected.has(b.dataset.airline))state.selected.delete(b.dataset.airline);else state.selected.add(b.dataset.airline);state.page=0;render();});
  $('single').classList.toggle('active',state.mode==='single');$('compare').classList.toggle('active',state.mode==='compare');
  const result=calc(),s=result.s;
@@ -200,3 +200,41 @@ function updateDataRows(){const rows=dataset(),size=25,pages=Math.max(1,Math.cei
 function save(text,name,type){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);}
 function downloadCSV(rows,name){if(!rows.length)return;const headers=Object.keys(rows[0]);const q=v=>'"'+String(v??'').replaceAll('"','""')+'"';save('﻿'+[headers.map(q).join(','),...rows.map(r=>headers.map(h=>q(r[h])).join(','))].join('\r\n'),name,'text/csv;charset=utf-8');}
 init();
+/* ---------- Summarize: overall application summary in Bangla ---------- */
+const SUMMARY_BN=[
+ ['🎯 অ্যাপের উদ্দেশ্য',[
+  'এটি একটি শিক্ষামূলক Aviation KPI dashboard — airline-এর গুরুত্বপূর্ণ performance মাপকাঠি (KPI) শেখা ও হিসাব করা শেখানোর জন্য তৈরি।',
+  'Statistics ও Econometrics in Aviation কোর্সের (CAM.145) teaching simulation অনুসরণ করে বানানো, সাথে ধাপে-ধাপে হিসাব ও বাংলা ব্যাখ্যা যোগ করা হয়েছে।',
+  'Airline-এর নাম বাস্তব, কিন্তু সব সংখ্যা কৃত্রিম (synthetic) — বাস্তব airline-এর ফলাফল নয়।']],
+ ['✈️ ডেটা কী আছে',[
+  '৫টি airline: Turkish Airlines (A321neo), Lufthansa (A320-200), Finnair (A320), airBaltic (A220-300), Ryanair (Boeing 737-800)।',
+  '২০২৫ সালের ১২ মাসের ৫,০০০ scheduled flight sector।',
+  'চারটি টেবিল: flight sectors, aircraft days, pilot days এবং monthly finance।']],
+ ['📊 ৩৪টি KPI — ৫টি বিভাগে',[
+  '<b>Commercial (বাণিজ্যিক):</b> Passengers, RPK, ASK, PLF, RASK, CASK, Yield।',
+  '<b>Cargo (কার্গো):</b> CTK, ACTK, Cargo load factor (CLF)।',
+  '<b>Operations (পরিচালনা):</b> Aircraft ও pilot utilisation, turnaround time, arrival delay, OTP, gate change, cancellation ও diversion rate।',
+  '<b>Baggage & service:</b> যাত্রী/flight প্রতি ব্যাগেজ, mishandled/delayed/lost baggage rate, complaint ও compliment rate।',
+  '<b>Financial (আর্থিক):</b> Operating profit ও margin, net profit, operating ও net cash flow, short-term ও long-term debt।']],
+ ['🔍 Filter ও তুলনা',[
+  'Single airline বা একাধিক airline পাশাপাশি compare করা যায়।',
+  'মাস (From–To), route (দুই দিকসহ), aircraft type ও sector distance (১,০০০ km-এর কম/বেশি) দিয়ে filter করা যায়।',
+  'Route/distance filter দিলে balance, cash flow, net profit ও utilisation KPI প্রযোজ্য নয় (N/A) দেখায়।']],
+ ['🧮 ধাপে-ধাপে হিসাব',[
+  'প্রতিটি KPI card-এ click করলে সংজ্ঞা, formula ও বাংলা ব্যাখ্যা দেখা যায়।',
+  '৪টি flight-এর নমুনা উদাহরণে সারি ধরে ধরে হিসাব দেখানো হয়, তারপর আসল dashboard ডেটার trace।',
+  'Numerator (লব) ও denominator (হর) আলাদা রঙে দেখানো হয় এবং practice প্রশ্ন আছে।']],
+ ['📈 Chart, ডেটা ও শব্দকোষ',[
+  'Monthly pattern chart-এ যেকোনো KPI-এর মাসভিত্তিক প্রবণতা দেখা যায়, সাথে exact মানের table।',
+  'Data পেজে raw ডেটা search, page করে দেখা এবং CSV/JSON হিসেবে download করা যায়।',
+  'Glossary-তে ৫৫টি aviation term-এর বাংলা ব্যাখ্যা; "Sources & assumptions" পেজে সংজ্ঞা ও অনুমান।',
+  'Browser-এর Back/Forward কাজ করে এবং বর্তমান view print করা যায়।']],
+ ['💡 মূল শিক্ষা',[
+  'RPK = ASK × PLF — যাত্রী বৃদ্ধি capacity না load factor থেকে এসেছে, তিনটি একসাথে দেখে বুঝতে হয়।',
+  'বেশি PLF মানেই বেশি লাভ নয় — yield, RASK ও CASK-ও বিবেচনা করতে হবে।',
+  'Airline-গুলোর route mix আলাদা, তাই তুলনার সময় একই period ও route দেখা জরুরি।']]
+];
+function openSummary(){$('summaryBody').innerHTML=SUMMARY_BN.map(([h,pts])=>`<h3>${h}</h3><ol>${pts.map(p=>`<li>${p}</li>`).join('')}</ol>`).join('');const d=$('summaryDlg');if(d.showModal)d.showModal();else d.setAttribute('open','');}
+$('summarizeBtn').onclick=openSummary;
+$('summaryClose').onclick=()=>$('summaryDlg').close();
+$('summaryDlg').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.close();});
